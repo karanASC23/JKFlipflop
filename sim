@@ -1,0 +1,94 @@
+#! /opt/homebrew/Cellar/icarus-verilog/13.0/bin/vvp
+:ivl_version "13.0 (stable)" "(v13_0)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/13.0/lib/ivl/system.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/13.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/13.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/13.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/13.0/lib/ivl/va_math.vpi";
+S_0x1012e9700 .scope module, "testBenchJKFlipflop" "testBenchJKFlipflop" 2 3;
+ .timescale -9 -12;
+v0xb6ac38460_0 .var "J", 0 0;
+v0xb6ac38500_0 .var "K", 0 0;
+v0xb6ac385a0_0 .net "Q", 0 0, L_0x1012f1570;  1 drivers
+v0xb6ac38640_0 .var "clk", 0 0;
+v0xb6ac386e0_0 .net "nQ", 0 0, L_0x1012f17a0;  1 drivers
+S_0x1012e9880 .scope module, "dut" "JKFlipflop" 2 11, 3 1 0, S_0x1012e9700;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "J";
+    .port_info 1 /INPUT 1 "K";
+    .port_info 2 /INPUT 1 "clk";
+    .port_info 3 /OUTPUT 1 "Q";
+    .port_info 4 /OUTPUT 1 "nQ";
+L_0x1012ef360 .functor AND 1, v0xb6ac38460_0, v0xb6ac38640_0, C4<1>, C4<1>;
+L_0x1012ef850 .functor AND 1, L_0x1012ef360, L_0x1012f17a0, C4<1>, C4<1>;
+L_0x1012ef8c0 .functor NOT 1, L_0x1012ef850, C4<0>, C4<0>, C4<0>;
+L_0x1012f1270 .functor AND 1, v0xb6ac38500_0, v0xb6ac38640_0, C4<1>, C4<1>;
+L_0x1012f1320 .functor AND 1, L_0x1012f1270, L_0x1012f1570, C4<1>, C4<1>;
+L_0x1012f1410 .functor NOT 1, L_0x1012f1320, C4<0>, C4<0>, C4<0>;
+L_0x1012f14c0 .functor AND 1, L_0x1012ef8c0, L_0x1012f17a0, C4<1>, C4<1>;
+L_0x1012f1570 .functor NOT 1, L_0x1012f14c0, C4<0>, C4<0>, C4<0>;
+L_0x1012f1620 .functor AND 1, L_0x1012f1410, L_0x1012f1570, C4<1>, C4<1>;
+L_0x1012f17a0 .functor NOT 1, L_0x1012f1620, C4<0>, C4<0>, C4<0>;
+v0x1012eed80_0 .net "J", 0 0, v0xb6ac38460_0;  1 drivers
+v0x1012e68f0_0 .net "K", 0 0, v0xb6ac38500_0;  1 drivers
+v0x1012e6990_0 .net "Q", 0 0, L_0x1012f1570;  alias, 1 drivers
+v0x1012e6a30_0 .net "R", 0 0, L_0x1012f1410;  1 drivers
+v0x1012e6ad0_0 .net "S", 0 0, L_0x1012ef8c0;  1 drivers
+v0x1012e6b70_0 .net *"_ivl_0", 0 0, L_0x1012ef360;  1 drivers
+v0xb6ac38000_0 .net *"_ivl_12", 0 0, L_0x1012f14c0;  1 drivers
+v0xb6ac380a0_0 .net *"_ivl_16", 0 0, L_0x1012f1620;  1 drivers
+v0xb6ac38140_0 .net *"_ivl_2", 0 0, L_0x1012ef850;  1 drivers
+v0xb6ac381e0_0 .net *"_ivl_6", 0 0, L_0x1012f1270;  1 drivers
+v0xb6ac38280_0 .net *"_ivl_8", 0 0, L_0x1012f1320;  1 drivers
+v0xb6ac38320_0 .net "clk", 0 0, v0xb6ac38640_0;  1 drivers
+v0xb6ac383c0_0 .net "nQ", 0 0, L_0x1012f17a0;  alias, 1 drivers
+    .scope S_0x1012e9700;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xb6ac38640_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0x1012e9700;
+T_1 ;
+    %delay 5000, 0;
+    %load/vec4 v0xb6ac38640_0;
+    %inv;
+    %store/vec4 v0xb6ac38640_0, 0, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0x1012e9700;
+T_2 ;
+    %vpi_call 2 18 "$dumpfile", "JKFlipflop.vcd" {0 0 0};
+    %vpi_call 2 19 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x1012e9700 {0 0 0};
+    %vpi_call 2 21 "$monitor", "t=%0t, clk=%b, J=%b, K=%b, S=%b, R=%b | Q=%b, nQ=%b", $time, v0xb6ac38640_0, v0xb6ac38460_0, v0xb6ac38500_0, v0x1012e6ad0_0, v0x1012e6a30_0, v0xb6ac385a0_0, v0xb6ac386e0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xb6ac38460_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xb6ac38500_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0xb6ac38460_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xb6ac38500_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0xb6ac38460_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0xb6ac38500_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xb6ac38460_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0xb6ac38500_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 29 "$finish" {0 0 0};
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testBench/testBenchJKFlipflop.v";
+    "RegisterTransferLevel/JKFlipflop.v";

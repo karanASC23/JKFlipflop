@@ -1,0 +1,27 @@
+`timescale 1ns/1ps /time_delay/percision
+
+module testBench_JkFlipflop;
+
+	reg J;
+	reg K;
+	reg S;
+	reg R;
+	reg clk = 0;
+	wire Q;
+	wire nQ;
+
+	JkFlipflop dut (.clk=(clk), .J=(J), K=(K), S=(S), R=(R), Q=(Q), nQ=(nQ);	 
+ 
+
+	always @(postedge clk) begin
+		//surfer
+		//surfer
+	.monitor(".clk=%d, .J=%b, .K=%b, S=%b,
+
+	/* sized # = <size[bit]>'base_format<#>
+		%b = binary
+		%h = hexademical
+		%d = decimal
+	*/  
+		
+endmodule

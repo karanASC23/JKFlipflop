@@ -1,0 +1,66 @@
+$date
+	Sun Nov  1 16:31:39 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module testBenchJKFlipflop $end
+$var wire 1 ! nQ $end
+$var wire 1 " Q $end
+$var reg 1 # J $end
+$var reg 1 $ K $end
+$var reg 1 % clk $end
+$scope module dut $end
+$var wire 1 # J $end
+$var wire 1 $ K $end
+$var wire 1 " Q $end
+$var wire 1 & R $end
+$var wire 1 ' S $end
+$var wire 1 % clk $end
+$var wire 1 ! nQ $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+1'
+1&
+0%
+0$
+0#
+x"
+x!
+$end
+#5000
+1%
+#10000
+0%
+1#
+#15000
+x'
+1%
+#20000
+1'
+0%
+1$
+#25000
+x'
+x&
+1%
+#30000
+1&
+1'
+0%
+0#
+#35000
+x&
+1%
+#40000
+1&
+0%
